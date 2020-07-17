@@ -46,15 +46,15 @@ int indexOf(DoublyLinkedList *list,void *data, compare equal){
 
 }
 Node* getNodeByPos(DoublyLinkedList *list,int pos){
-    //feito para testar addAll
-    if(isEmpty(list) || pos > list->size)return NULL;
+    //feito para testar a função addAll
+    //if(isEmpty(list) || pos > list->size)return NULL;
 
-    Node * aux = list->first->next;
+    //Node * aux = list->first->next;
 
-    int count;
-    for(count = 0; (aux != list->first->previous && pos != count); count++, aux = aux->next);
+    //int count;
+    //for(count = 0; (aux != list->first->previous && pos != count); count++, aux = aux->next);
 
-    return aux;
+    //return aux;
 }
 void* getPos(DoublyLinkedList *list,int pos){
 
@@ -68,24 +68,18 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource){
 
     if(pos < 1) return -3;
 
-    //Removendo trashNode do listDest
-
-    Node * trashNodeDest = listDest->first;
-    listDest->first->previous->next = trashNodeDest->next;
-    trashNodeDest->next->previous = trashNodeDest->previous;
-
-    trashNodeDest->next = NULL;
-    trashNodeDest->previous = NULL;
-    free(trashNodeDest);
-
 
     Node * aux = getNodeByPos(listDest, (pos-1));
-    Node * firstSource = listSource->first;
+    Node * listSourceFirst = listSource->first;
+    Node * listSourceLast  = listSource->first->previous; 
 
-    
+    listSource->first->previous->next = aux->next;
+    listSource->first->previous = aux;
+    aux->next->previous = listSourceLast;
+    aux->next = listSourceFirst;
 
-
-
+    listDest->size += listSource->size;
+    return listDest->size;
 }
 void* removePos(DoublyLinkedList *list, int pos){
 
