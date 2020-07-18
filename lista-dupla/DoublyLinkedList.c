@@ -103,8 +103,22 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource){
 void* removePos(DoublyLinkedList *list, int pos){
 
 }
+//Função responsavel por remover um dado
 bool removeData(DoublyLinkedList *list, void *data, compare equal){
-
+    if(isEmpty(list)) return 0; 
+    Node *aux = list->first->next; 
+    while(aux != list->first ){    
+        if(equal(aux->data,data)){
+            aux->previous->next = aux->next;
+            aux->next->previous = aux->previous;
+            free(aux->data);
+            free(aux);
+            return 1;
+            list->size--;
+        }
+      aux = aux->next;
+    }
+    return 0;
 }
 void show(DoublyLinkedList *list, printNode print){
 
