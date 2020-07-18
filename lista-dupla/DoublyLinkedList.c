@@ -58,7 +58,24 @@ void* last(DoublyLinkedList *list){
 
 }
 int push(DoublyLinkedList *list, void *data){
+    Node *newNode = (Node*) malloc(sizeof(Node)); //cria uma variavel novoNode para inserir um novo nó apos inserção de valor, e verifica se a espaço na memoria para alocar esta variavel de 'node'.
+    
+    if (newNode==NULL) 
+    return -1;      //caso não tenha espaço retorna -1.
+
+    newNode->data = data; // aqui o novo nó passa a apontar para variavel data que recebe dados.
+    
+    newNode->next = list->first->next; //neste parametro o novo nó aponta para next que recebe a lista com a primeira posição dela que é first que aponta de volta next.
    
+    newNode->previous = list->first;// a variavel newnode volta em ação apontando para previous que é a estrutura anterior, que estará recebendo a lista com a primeira posição que é first.
+   
+    list->first->next->previous = newNode;// esta condição entrará se atribuição de função do newNode for afirmada, o parametro apresentado refere-se a como a lista se encontra após ter sido adicionado algo
+   
+    list->first->next = newNode;// após a apresentação acima a lista volta para a primeira posição.
+    
+    list->size++; //aqui a lista é "atualizada" com os novos valores.
+    
+    return 1;
 }
 void* pop(DoublyLinkedList *list){
 
