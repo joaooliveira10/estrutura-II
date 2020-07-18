@@ -31,7 +31,7 @@ void* last(DoublyLinkedList *list){
 
 }
 int push(DoublyLinkedList *list, void *data){
-
+   
 }
 void* pop(DoublyLinkedList *list){
 
