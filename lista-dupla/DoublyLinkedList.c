@@ -22,7 +22,34 @@ int enqueue(DoublyLinkedList *list, void *data){
 
 }
 void* dequeue(DoublyLinkedList *list){
+    // se tiver vazia, só sai
+    if (isEmpty(list)) return NULL;
 
+    // ele cria um ponteiro, `trash`, que guarda o primeiro nó (começo da lista)
+    Node *trash = list->first;
+
+    // faz o primeiro receber o próximo nó (segundo elemento)
+    Node *first = list->first->next;
+
+    // !!! `first` agora é o segundo elemento !!!
+
+    // o anteior do segundo elemento recebe o começo da lista
+    first->next->previous = trash;
+
+    // o próximo elemento depois do começo recebe o segundo
+    trash->next = first->next;
+
+    // guarda o dado em uma váriavel `data`
+    void *data = first->data;
+
+    // liberar a memória do `first`
+    free(first);
+
+    // diminui o tamanho da lista
+    list->size--;
+
+    // retorna o dado
+    return data;
 }
 void* first(DoublyLinkedList *list){
 
@@ -76,8 +103,22 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource){
 void* removePos(DoublyLinkedList *list, int pos){
 
 }
+//Função responsavel por remover um dado
 bool removeData(DoublyLinkedList *list, void *data, compare equal){
-
+    if(isEmpty(list)) return 0; 
+    Node *aux = list->first->next; 
+    while(aux != list->first ){    
+        if(equal(aux->data,data)){
+            aux->previous->next = aux->next;
+            aux->next->previous = aux->previous;
+            free(aux->data);
+            free(aux);
+            return 1;
+            list->size--;
+        }
+      aux = aux->next;
+    }
+    return 0;
 }
 void show(DoublyLinkedList *list, printNode print){
 
