@@ -4,7 +4,7 @@
 
 
 void init(DoublyLinkedList *list){
-    
+
     Node * trashNode = (Node *)(malloc(sizeof(Node)));
 
     if(trashNode == NULL)printf("Erro ao alocar o trashNode");
@@ -59,22 +59,22 @@ void* last(DoublyLinkedList *list){
 }
 int push(DoublyLinkedList *list, void *data){
     Node *newNode = (Node*) malloc(sizeof(Node)); //cria uma variavel novoNode para inserir um novo nó apos inserção de valor, e verifica se a espaço na memoria para alocar esta variavel de 'node'.
-    
-    if (newNode==NULL) 
+
+    if (newNode==NULL)
     return -1;      //caso não tenha espaço retorna -1.
 
     newNode->data = data; // aqui o novo nó passa a apontar para variavel data que recebe dados.
-    
+
     newNode->next = list->first->next; //neste parametro o novo nó aponta para next que recebe a lista com a primeira posição dela que é first que aponta de volta next.
-   
+
     newNode->previous = list->first;// a variavel newnode volta em ação apontando para previous que é a estrutura anterior, que estará recebendo a lista com a primeira posição que é first.
-   
+
     list->first->next->previous = newNode;// esta condição entrará se atribuição de função do newNode for afirmada, o parametro apresentado refere-se a como a lista se encontra após ter sido adicionado algo
-   
+
     list->first->next = newNode;// após a apresentação acima a lista volta para a primeira posição.
-    
+
     list->size++; //aqui a lista é "atualizada" com os novos valores.
-    
+
     return 1;
 }
 void* pop(DoublyLinkedList *list){
@@ -87,7 +87,16 @@ bool isEmpty(DoublyLinkedList *list){
     return (list->size == 0);
 }
 int indexOf(DoublyLinkedList *list,void *data, compare equal){
+if (isEmpty(list)) return -1; //verifica se a lista está vazia
+    int count=0;
+    Node *aux = list->first->next; // nó auxiliar para guardar o endereço do primeiro nó com dado
 
+    while(aux!=list->first && !equal(aux->data,data)) {
+        aux=aux->next;
+        count++;
+    }
+
+    return (aux==list->first)?-1:count;//se achou o dado, retorna a posição, se não retorna -1
 }
 Node* getNodeByPos(DoublyLinkedList *list,int pos){
 
@@ -107,12 +116,12 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource){
     if(pos < 1) return -3;
 
     Node * aux = getNodeByPos(listDest, (pos-1));
-    Node * listSourceLast  = listSource->first->previous; 
+    Node * listSourceLast  = listSource->first->previous;
 
     listSource->first->previous->next = aux->next;
     listSource->first->next->previous = aux;
     aux->next->previous = listSourceLast;
-    aux->next = listSource->first->next; 
+    aux->next = listSource->first->next;
 
     listDest->size += listSource->size;
     return listDest->size;
@@ -122,9 +131,9 @@ void* removePos(DoublyLinkedList *list, int pos){
 }
 //Função responsavel por remover um dado
 bool removeData(DoublyLinkedList *list, void *data, compare equal){
-    if(isEmpty(list)) return 0; 
-    Node *aux = list->first->next; 
-    while(aux != list->first ){    
+    if(isEmpty(list)) return 0;
+    Node *aux = list->first->next;
+    while(aux != list->first ){
         if(equal(aux->data,data)){
             aux->previous->next = aux->next;
             aux->next->previous = aux->previous;
@@ -143,13 +152,13 @@ void show(DoublyLinkedList *list, printNode print){
 
     printf("\nImpressão dos dados de cada nó");
     printf("\n------------------------------\n");
-    
+
     while (aux != list->first)
     {
         print(aux->data);
         aux = aux->next;
     }
-    
+
     printf("\n------------------------------\n");
 }
 void showMem(DoublyLinkedList *list){
