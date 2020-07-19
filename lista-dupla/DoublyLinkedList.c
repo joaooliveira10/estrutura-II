@@ -78,7 +78,7 @@ int push(DoublyLinkedList *list, void *data){
     return 1;
 }
 void* pop(DoublyLinkedList *list){
-
+    return dequeue(list);
 }
 void* top(DoublyLinkedList *list){
 
