@@ -18,7 +18,24 @@ void init(DoublyLinkedList *list){
 }
 
 int enqueue(DoublyLinkedList *list, void *data){
-
+    //reserva um espaço novo na memória 
+  Node *newNode = (Node*)malloc(sizeof(Node));
+    //caso nao tenha espaço na memoria ou seja novo nó for nulo entao 
+    //retornamos -1 para que o usario entenda que tem algo errado
+    if (newNode==NULL) return -1;
+    newNode->data = data;
+    //deixa o novo nó apontando para nexte que recebe list na pocisao inicial
+    newNode->next = list->first;
+    //novo nó apontando para o anterior recebe a lista apontando para o primeiro que aponta para o ultimo
+    newNode->previous = list->first->previous;
+    //list que aponta para o primero, aponta para o ultimo que aponta para o proximo que recebe o novo
+    list->first->previous->next = newNode;
+    //list aponta para o primeira, aponta para ultimo que recebe o proximo
+    list->first->previous = newNode;
+    // almenta o tamanho da lista
+    list->size++;
+    //retorna 1 e encerra o programa
+    return 1;
 
 }
 void* dequeue(DoublyLinkedList *list){
@@ -38,7 +55,6 @@ void* dequeue(DoublyLinkedList *list){
 
     // o próximo elemento depois do começo recebe o segundo
     trash->next = first->next;
-
     // guarda o dado em uma váriavel `data`
     void *data = first->data;
 
@@ -58,22 +74,30 @@ void* last(DoublyLinkedList *list){
 
 }
 int push(DoublyLinkedList *list, void *data){
-    Node *newNode = (Node*) malloc(sizeof(Node)); //cria uma variavel novoNode para inserir um novo nó apos inserção de valor, e verifica se a espaço na memoria para alocar esta variavel de 'node'.
+    Node *newNode = (Node*) malloc(sizeof(Node)); 
+    //cria uma variavel novoNode para inserir um novo nó apos inserção de valor, e verifica se a espaço na memoria para alocar esta variavel de 'node'.
 
     if (newNode==NULL)
-    return -1;      //caso não tenha espaço retorna -1.
+    return -1;     
+     //caso não tenha espaço retorna -1.
 
-    newNode->data = data; // aqui o novo nó passa a apontar para variavel data que recebe dados.
+    newNode->data = data; 
+    // aqui o novo nó passa a apontar para variavel data que recebe dados.
 
-    newNode->next = list->first->next; //neste parametro o novo nó aponta para next que recebe a lista com a primeira posição dela que é first que aponta de volta next.
+    newNode->next = list->first->next; 
+    //neste parametro o novo nó aponta para next que recebe a lista com a primeira posição dela que é first que aponta de volta next.
 
-    newNode->previous = list->first;// a variavel newnode volta em ação apontando para previous que é a estrutura anterior, que estará recebendo a lista com a primeira posição que é first.
+    newNode->previous = list->first;
+    // a variavel newnode volta em ação apontando para previous que é a estrutura anterior, que estará recebendo a lista com a primeira posição que é first.
 
-    list->first->next->previous = newNode;// esta condição entrará se atribuição de função do newNode for afirmada, o parametro apresentado refere-se a como a lista se encontra após ter sido adicionado algo
+    list->first->next->previous = newNode;
+    // esta condição entrará se atribuição de função do newNode for afirmada, o parametro apresentado refere-se a como a lista se encontra após ter sido adicionado algo
 
-    list->first->next = newNode;// após a apresentação acima a lista volta para a primeira posição.
+    list->first->next = newNode;
+    // após a apresentação acima a lista volta para a primeira posição.
 
-    list->size++; //aqui a lista é "atualizada" com os novos valores.
+    list->size++; 
+    //aqui a lista é "atualizada" com os novos valores.
 
     return 1;
 }
