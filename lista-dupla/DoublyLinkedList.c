@@ -80,8 +80,8 @@ int push(DoublyLinkedList *list, void *data){
 void* pop(DoublyLinkedList *list){
 
 }
-void* top(DoublyLinkedList *list){
-
+void* top(DoublyLinkedList *list){  
+    return first(list);             //O ponteiro consuta o topo da pilha retornando o primeiro da fila
 }
 bool isEmpty(DoublyLinkedList *list){
     return (list->size == 0);
