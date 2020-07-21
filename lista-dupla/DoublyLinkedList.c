@@ -67,8 +67,10 @@ void* dequeue(DoublyLinkedList *list){
     // retorna o dado
     return data;
 }
+    //A função fist analiza o primeiro dado 
 void* first(DoublyLinkedList *list){
-
+    return list->first->next->data;
+    //Faz o primeiro receber o proximo e aponta para o dado
 }
 void* last(DoublyLinkedList *list){
 
