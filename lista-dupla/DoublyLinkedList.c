@@ -125,6 +125,10 @@ if (isEmpty(list)) return -1; //verifica se a lista está vazia
     return (aux==list->first)?-1:count;//se achou o dado, retorna a posição, se não retorna -1
 }
 Node* getNodeByPos(DoublyLinkedList *list,int pos){
+    if (isEmpty(list) || pos>=list->size) return NULL;
+    Node *aux = list->first->next;
+    for (int count=0;(aux!=list->first && count<pos);count++,aux=aux->next);
+    return aux
 
 }
 void* getPos(DoublyLinkedList *list,int pos){
