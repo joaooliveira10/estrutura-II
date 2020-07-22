@@ -128,11 +128,12 @@ Node* getNodeByPos(DoublyLinkedList *list,int pos){
     if (isEmpty(list) || pos>=list->size) return NULL;
     Node *aux = list->first->next;
     for (int count=0;(aux!=list->first && count<pos);count++,aux=aux->next);
-    return aux
-
+    return aux;
 }
 void* getPos(DoublyLinkedList *list,int pos){
+    Node * dataPos = getNodeByPos(list,pos);
 
+    return (dataPos == NULL)?NULL:dataPos->data;
 }
 int add(DoublyLinkedList *list, int pos, void *data){
     Node *aux = getNodeByPos(list, pos); 
