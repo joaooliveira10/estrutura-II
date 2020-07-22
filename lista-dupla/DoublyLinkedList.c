@@ -171,7 +171,22 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource){
     listDest->size += listSource->size;
     return listDest->size;
 }
+//Função responsavel por remover um elemento baseado na  posição fornecida
 void* removePos(DoublyLinkedList *list, int pos){
+    Node aux  = getNodeByPos(list,pos);
+    if(aux == NULL) return NULL;
+
+    aux->previous->next = aux->next;
+    aux->next->previous = aux->previous;
+
+    void data = aux->data;
+
+    free(aux);
+
+    list->size--;
+
+    return data;
+
 
 }
 //Função responsavel por remover um dado
