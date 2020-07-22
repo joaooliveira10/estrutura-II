@@ -73,7 +73,7 @@ void* first(DoublyLinkedList *list){
     //Faz o primeiro receber o proximo e aponta para o dado
 }
 void* last(DoublyLinkedList *list){
-
+    return (isEmpty(list)?NULL:list->first->previous->data);
 }
 int push(DoublyLinkedList *list, void *data){
     Node *newNode = (Node*) malloc(sizeof(Node)); 
@@ -173,13 +173,13 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource){
 }
 //Função responsavel por remover um elemento baseado na  posição fornecida
 void* removePos(DoublyLinkedList *list, int pos){
-    Node aux  = getNodeByPos(list,pos);
+    Node * aux  = getNodeByPos(list,pos);
     if(aux == NULL) return NULL;
 
     aux->previous->next = aux->next;
     aux->next->previous = aux->previous;
 
-    void data = aux->data;
+    void  * data = aux->data;
 
     free(aux);
 
@@ -222,5 +222,16 @@ void show(DoublyLinkedList *list, printNode print){
     printf("\n------------------------------\n");
 }
 void showMem(DoublyLinkedList *list){
-
+    Node * aux = list->first->next;
+ 
+    printf("\nImpressão dos endereços de cada nó");
+    printf("\n-----------------------------------------------------------------\n");
+    //  printf("%s -\t \t \t %s -\t \t \t \b %s ","Node", "Next", "Previous\n");
+    printf("%5s  %22s  %12s %13s %7s %13s","Node:", "Next","-", "Previous","-","Data\n\n");
+        while (aux != list->first)
+        {
+            printf("%p:   \t %p   -\t %p -\t %p\n ",aux,aux->next,aux->previous,aux->data);
+            aux = aux->next;
+        }
+     printf("\n-----------------------------------------------------------------\n");
 }
