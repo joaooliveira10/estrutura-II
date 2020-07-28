@@ -102,3 +102,14 @@ Node *tail(Node *list) {
 
     return (*list).next;
 }
+// grupo 05 Caroline e Gabriel
+boolean search(Node *list, int atom){
+// verifica se a lista nao esta nula  
+ if (*list == NULL) {
+     return false;
+ }
+//verifica se o elemento que procuramos esta na lista
+    else if search (head(list),atom) return true;
+//chama oproximo elemento
+    else return search(list->next,atom);
+}
