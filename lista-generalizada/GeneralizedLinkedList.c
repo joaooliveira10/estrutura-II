@@ -62,3 +62,42 @@ int addList(Node **list, Node **subList){
     return -1;
 
 }
+// Grupo3- Cristian e Rubia
+// retorna o primeiro elemento da lista (átomo ou lista)
+Node *head(Node *list) {
+  //se lista for nula 
+    if (list == NULL) 
+    {  // ele retornará "[]" 
+        return NULL;
+    }
+
+    Node *node = (Node *) malloc(sizeof(Node));
+    node->type = list->type;
+    node->next = NULL;
+
+    switch (list->type) {
+      // caso a lista for do tipo 0 , ele será considerado do tipo atomo, o nó apontará para a lista de atomos. 
+    case 0:
+        node->atomList.atom = list->atomList.atom;
+        break;
+      // caso lista for do tipo 1 , ele será considerado do tipo "sublista", ai o nó apontará para a lista de sublista. 
+    case 1:
+        node->atomList.list = list->atomList.list;
+        break;
+    }
+    
+    return node;
+}
+// Grupo3- Cristian e Rubia
+// retorna o resto (uma outra lista, mesmo que vazia)
+Node *tail(Node *list) {
+  //se tiver um valor na lista a cabeça seráconsiderada calda tambem.
+    // caso o próximo elemento seja nulo
+    // retorna a própria lista
+    if ((*list).next == NULL)
+    {
+        return list;
+    }
+
+    return (*list).next;
+}
