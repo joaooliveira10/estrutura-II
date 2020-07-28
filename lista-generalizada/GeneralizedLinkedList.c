@@ -130,3 +130,22 @@ bool search(Node list, int atom){
 //chama os oproximos elementos
     else return search(tail(list),atom);
 }
+//Grupo 06 João e Wigor
+int depth(Node *list) {           //depth retorna a profundidade da lista
+    int profundidadeAtual = 0;    //a variavel profundidadeAtual recebe o valor de 0
+    if (list==NULL)               //se a lista for nula retornara 0
+        return 0;
+
+    Node *aux = NULL;                                //auxiliar aponta para nulo
+    for (aux = list; aux!=NULL; aux=aux->tail) {    //(para aux recebe lista, aux diferente de nulo, aux recebe tail.
+                                                   //se tiver um valor na lista a cabeça seráconsiderada calda tambem. Caso o próximo elemento seja nulo
+                                                  // retorna a própria lista)
+
+        if (aux->type==1) {                         //se o auxiliar recebe type igual a 1
+            int prof = depth(aux->atomList.list);  // a variavel prof recebe o valor da prondidade da atomLista
+            if (prof>profundidadeAtual)           // (se a profundidade for maior que o valor da profundidade atual
+                profundidadeAtual=prof;          //  a profundidade atual recebe o valor de profunidade
+        }
+    }
+    return profundidadeAtual+1;                 //retornando profundidade atual +1
+}
