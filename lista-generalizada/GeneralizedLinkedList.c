@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "generallist.h"
+#include "GeneralizedLinkedList.h" 
 
 //Grupo 1 - Thays e Victor
 // adiciona um átomo na lista
@@ -102,8 +102,25 @@ Node *tail(Node *list) {
 
     return (*list).next;
 }
+// Grupo 04 - André e Danubia
+void show(Node *list){
+    Node * aux = list;
+    if(aux == NULL)printf("Lista sem nós");
+
+    printf("( ");
+    for(;aux != NULL; aux = aux->next){
+        if(aux->type == 0){
+            printf(" %d", aux->atomList.atom);
+            if(aux->next->type == 0) printf(", ");
+        }else
+        {
+            show(aux->atomList.list);
+        }
+    }
+    printf(" )");
+}
 // grupo 05 Caroline e Gabriel
-boolean search(Node *list, int atom){
+bool search(Node *list, int atom){
 // verifica se a lista nao esta nula  
  if (*list == NULL) {
      return false;
