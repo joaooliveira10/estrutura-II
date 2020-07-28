@@ -120,13 +120,13 @@ void show(Node *list){
     printf(" )");
 }
 // grupo 05 Caroline e Gabriel
-bool search(Node *list, int atom){
-// verifica se a lista nao esta nula  
- if (*list == NULL) {
+bool search(Node list, int atom){
+// verifica se a lista nao esta nula
+ if (list == NULL) {
      return false;
  }
 //verifica se o elemento que procuramos esta na lista
-    else if search (head(list),atom) return true;
-//chama oproximo elemento
-    else return search(list->next,atom);
+    else if search (head(tail(list),atom) return true;
+//chama os oproximos elementos
+    else return search(tail(list),atom);
 }
