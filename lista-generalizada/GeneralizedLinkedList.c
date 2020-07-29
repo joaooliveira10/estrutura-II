@@ -28,8 +28,10 @@ int addAtom(Node **list, int atom) {
     return EXIT_SUCCESS;
 }
 
-int addList(Node **list, Node **subList){
     //Grupo 2 - Bruno e Henrique
+    //Adiciona sublistas na lista
+int addList(Node **list, Node **subList){
+    
 
     Node *newnode =(Node*) malloc(sizeof(Node));
     newnode->atomList.list =(*subList);
