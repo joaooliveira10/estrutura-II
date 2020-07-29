@@ -31,38 +31,24 @@ int addAtom(Node **list, int atom) {
     //Grupo 2 - Bruno e Henrique
     //Adiciona sublistas na lista
 int addList(Node **list, Node **subList){
-    
 
-    Node *newnode =(Node*) malloc(sizeof(Node));
-    newnode->atomList.list =(*subList);
-    newnode->type = 1;
-    newnode->next = NULL;
-
-    if((*list) == NULL){
-        (*list) = newnode;
+Node *new_node = (Node*)malloc(sizeof(Node));
+  
+    new_node->type = 1;
+    new_node->next = NULL;
+    new_node->atomList.list = (subList);
+  
+    if((list) == NULL){
+        (list) = new_node;
         return 1;
-
-    }else if((*subList)->atomList.atom < (*list)->atomList.atom){
-        Node *aux =(Node*) malloc(sizeof(Node));
-        aux = (*list);
-        newnode->next = aux;
-        (*list) = newnode;
-    }else{
-        Node *aux =(Node*) malloc(sizeof(Node));
-        aux = (*list);
-        int atomo =(*subList)->atomList.atom;
-        while(atomo > aux->next->atomList.atom && aux->next != NULL)
-            aux = aux->next;
-        if(aux->next != NULL){
-            Node *aux2 =(Node*) malloc(sizeof(Node));
-            aux2 = aux->next;
-            aux->next = newnode;
-            newnode->next = aux2;
-        }
-        aux->next = newnode;
-    return 1;
     }
-    return -1;
+
+    Node *aux = *list;
+    for(aux->next!= NULL;aux = aux->next;);
+    
+    aux->next = new_node;
+    
+    return 1;
 
 }
 // Grupo3- Cristian e Rubia
