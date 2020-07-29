@@ -107,30 +107,29 @@ void show(Node *list){
         }
     }
    
-    
     printf("),");
 
 }
 
 // grupo 05 Caroline e Gabriel
-void show(Node *list){
+bool search(Node *list, int atom){
+
     
     Node * aux = list; // criado nó auxiliar que recebe o endereço da lista
 
-    printf("(");
     for(;aux != NULL; aux = aux->next){      // ira percorrer a lista até aux->next ser NULL, ou seja até econtrar o fim da lista
-        if(aux->type == 0){                 // se o type for == 0 apenas ira exibir o atom
-            printf("%d", aux->atomList.atom);
-            if(aux->next != NULL) printf(", "); 
+        if(aux->type == 0){                 // se o type for == 0 ira verificar se o atom é igual a o numero informado
+            if(atom == aux->atomList.atom);
+            return true; 
         
         }else                                  // se não for do type == 0, logo sera uma sublista
         {   
-            show(aux->atomList.list);          // chamara assim a função novamente, entretanto enviando o endereço da sublista
+            search(aux->atomList.list);          // chamara assim a função novamente, entretanto enviando o endereço da sublista
         }
     }
    
     
-    printf("),");
+    return false; // se percorrer toda a lista e nao retornar verdadeiro entao retorna falso
 
 }
 
