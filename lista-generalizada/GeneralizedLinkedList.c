@@ -32,7 +32,7 @@ int addList(Node **list, Node **subList){
     //Grupo 2 - Bruno e Henrique
 
     Node *newnode =(Node*) malloc(sizeof(Node));
-    newnode->atomList->list =(*subList);
+    newnode->atomList.list =(*subList);
     newnode->type = 1;
     newnode->next = NULL;
 
@@ -120,16 +120,16 @@ void show(Node *list){
     printf(" )");
 }
 // grupo 05 Caroline e Gabriel
-bool search(Node list, int atom){
+bool search(Node *list, int atom){
 // verifica se a lista nao esta nula
  if (list == NULL) {
      return false;
  }
 //verifica se o elemento que procuramos esta na lista
-    else if search (head(tail(list),atom) return true;
+    else if ( search (head(tail(list)), atom) ) return true;
 //chama os oproximos elementos
     else return search(tail(list),atom);
-}
+};
 //Grupo 06 João e Wigor
 int depth(Node *list) {           //depth retorna a profundidade da lista
     int profundidadeAtual = 0;    //a variavel profundidadeAtual recebe o valor de 0
@@ -137,7 +137,7 @@ int depth(Node *list) {           //depth retorna a profundidade da lista
         return 0;
 
     Node *aux = NULL;                                //auxiliar aponta para nulo
-    for (aux = list; aux!=NULL; aux=aux->tail) {    //(para aux recebe lista, aux diferente de nulo, aux recebe tail.
+    for (aux = list; aux!=NULL; aux=aux->next) {    //(para aux recebe lista, aux diferente de nulo, aux recebe tail.
                                                    //se tiver um valor na lista a cabeça seráconsiderada calda tambem. Caso o próximo elemento seja nulo
                                                   // retorna a própria lista)
 
