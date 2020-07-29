@@ -113,16 +113,27 @@ void show(Node *list){
 }
 
 // grupo 05 Caroline e Gabriel
-bool search(Node *list, int atom){
-// verifica se a lista nao esta nula
- if (list == NULL) {
-     return false;
- }
-//verifica se o elemento que procuramos esta na lista
-    else if ( search (head(tail(list)), atom) ) return true;
-//chama os oproximos elementos
-    else return search(tail(list),atom);
-};
+void show(Node *list){
+    
+    Node * aux = list; // criado nó auxiliar que recebe o endereço da lista
+
+    printf("(");
+    for(;aux != NULL; aux = aux->next){      // ira percorrer a lista até aux->next ser NULL, ou seja até econtrar o fim da lista
+        if(aux->type == 0){                 // se o type for == 0 apenas ira exibir o atom
+            printf("%d", aux->atomList.atom);
+            if(aux->next != NULL) printf(", "); 
+        
+        }else                                  // se não for do type == 0, logo sera uma sublista
+        {   
+            show(aux->atomList.list);          // chamara assim a função novamente, entretanto enviando o endereço da sublista
+        }
+    }
+   
+    
+    printf("),");
+
+}
+
 //Grupo 06 João e Wigor
 int depth(Node *list) {           //depth retorna a profundidade da lista
     int profundidadeAtual = 0;    //a variavel profundidadeAtual recebe o valor de 0
