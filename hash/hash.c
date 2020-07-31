@@ -25,4 +25,8 @@ void* get(HashStruct *hashStruct, char *key, compare equal){
 void* removeKey(HashStruct *hashStruct, char *key, compare equal){
 }
 void showHashStruct(HashStruct *hashStruct){
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 40009f1973e6b36c0f32f3fa423eb3aeabc57056
