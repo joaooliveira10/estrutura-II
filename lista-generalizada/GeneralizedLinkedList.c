@@ -1,45 +1,3 @@
-<<<<<<< HEAD
-
-// retorna o primeiro elemento da lista (átomo ou lista)
-// rubia e cristian 
-Node *head(Node *list) {
-  //
-    if (list == NULL) 
-    {
-        return NULL;
-    }
-
-    Node *node = (Node *) malloc(sizeof(Node));
-    node->type = list->type;
-    node->next = NULL;
-
-    switch (list->type) {
-    case 0:
-        node->atomList.atom = list->atomList.atom;
-        break;
-    case 1:
-        node->atomList.list = list->atomList.list;
-        break;
-    }
-    
-    return node;
-}
-
-// retorna o resto (uma outra lista, mesmo que vazia)
-Node *tail(Node *list) {
-    // caso o próximo elemento seja nulo
-    // retorna a própria lista
-    if ((*list).next == NULL)
-    {
-        return list;
-    }
-
-    return (*list).next;
-}
-
-
-int addList(Node **list, Node **subList){
-=======
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -49,7 +7,6 @@ int addList(Node **list, Node **subList){
 // adiciona um átomo na lista
 int addAtom(Node **list, int atom) {
     Node* node = (Node *) malloc(sizeof(Node));
->>>>>>> 82a88c310a27f3a3110ade8537c985b7c3dc4645
 
     node->type = 0;
     node->atomList.atom = atom;
