@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Hash.h"
+#include "DoublyLinkedList.c"
+
 
 void initHash(HashStruct *hashStruct){
 }
@@ -23,6 +25,12 @@ bool containsKey(HashStruct *hashStruct, char *key, compare equal){
 void* get(HashStruct *hashStruct, char *key, compare equal){
 }
 void* removeKey(HashStruct *hashStruct, char *key, compare equal){
+    int hashValue = hash(key);
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
+    void* result = removePos(&hashStruct->hashes[hashValue], pos);
+    if (result!=NULL) hashStruct->size--;
+    return result;
 }
+
 void showHashStruct(HashStruct *hashStruct){
 }
