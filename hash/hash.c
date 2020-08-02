@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Hash.h"
+#include "hash.h"
 #include "DoublyLinkedList.c"
 
 
@@ -18,7 +18,14 @@ int hash(char *key){ //( Dupla 3- rubia e cristian)
     }
     return sum%MAX; //retorna o resto da divisão
 }
+//Dupla 4 - André e Danubia
 int put(HashStruct *hashStruct, char *key, void *data, compare equal){
+    DoublyLinkedList * aux; 
+
+    int hashCode = hash(key);
+    printf("hash:%d\n",hashCode);
+
+    return 1;
 }
 bool containsKey(HashStruct *hashStruct, char *key, compare equal){
 }
