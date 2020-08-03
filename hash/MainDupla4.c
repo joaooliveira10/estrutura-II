@@ -28,6 +28,7 @@ int main() {
     strcpy(andre->nome,"André");
     strcpy(andre->email,"andre@gmail.com");
     int x = put(&hashes,andre->email,andre,comparaChaves);
+    printf("x:%d",x);
 
 
 return 0;

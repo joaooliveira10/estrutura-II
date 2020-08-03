@@ -14,18 +14,25 @@ int hash(char *key){ //( Dupla 3- rubia e cristian)
     // percorremos todos os caracteres da string passada
     for (int i = 0; key[i]!=0;i++) {
          //acumulamos os códigos ascii de cada letra com um peso
+         printf("Key[%d]:%c",i,key[i]);
         sum+=key[i]*(i+1);
     }
     return sum%MAX; //retorna o resto da divisão
 }
-//Dupla 4 - André e Danubia
+//Dupla 4 - Andre e Danubia
 int put(HashStruct *hashStruct, char *key, void *data, compare equal){
-    DoublyLinkedList * aux; 
 
-    int hashCode = hash(key);
-    printf("hash:%d\n",hashCode);
+    //teste sem a containsKey
+    int pos = hash(key);
 
-    return 1;
+    int keyExist = indexOf(&hashStruct->hashes[pos],data,equal);
+
+    if(keyExist < 0 || isEmpty(&hashStruct->hashes[pos])){
+        enqueue(&hashStruct->hashes[pos],data);
+        hashStruct[pos].size++;
+        return 1;
+    }
+    return -1;
 }
 bool containsKey(HashStruct *hashStruct, char *key, compare equal){
 }
