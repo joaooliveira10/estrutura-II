@@ -27,7 +27,14 @@ int put(HashStruct *hashStruct, char *key, void *data, compare equal){
 
     return 1;
 }
+// Caroline e Gabriel
 bool containsKey(HashStruct *hashStruct, char *key, compare equal){
+	 //calcula a posição
+    int hashValue = hash(key);
+    //busca na fila a posição da chave
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal); 
+    
+    return (pos!=-1)?true:false;
 }
 void* get(HashStruct *hashStruct, char *key, compare equal){
 }
