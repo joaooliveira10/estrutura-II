@@ -21,7 +21,7 @@ int hash(char *key){ //( Dupla 3- rubia e cristian)
 }
 //Dupla 4 - Andre e Danubia
 int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
-    if (!containsKey(hashStruct, key, equal) {
+    if (!containsKey(hashStruct, key, equal)) {
         //adiciona na fila que está na posição devolvida pela função hash
         int res = enqueue(&hashStruct->hashes[hash(key)],data);
         //incrementa a qtde de elementos baseado na quantidade inserida por enqueue
