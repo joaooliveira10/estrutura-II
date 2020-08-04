@@ -8,6 +8,7 @@
 void initHash(HashStruct *hashStruct){
 }
 bool isHashEmpty(HashStruct *hashStruct){
+    return hashStruct->size == 0;
 }
 int hash(char *key){ //( Dupla 3- rubia e cristian)
     int sum = 0;
