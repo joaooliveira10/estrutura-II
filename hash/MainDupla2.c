@@ -61,5 +61,10 @@ int main(){
 
 
     showHashStruct(&hash_list, printcliente);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> cocada
     return 1;
 }
