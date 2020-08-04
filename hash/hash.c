@@ -36,14 +36,23 @@ int put(HashStruct *hashStruct, char *key, void *data, compare equal){
 }
 // Caroline e Gabriel
 bool containsKey(HashStruct *hashStruct, char *key, compare equal){
-	 //calcula a posição
+	 //calcula a posiï¿½ï¿½o
     int hashValue = hash(key);
-    //busca na fila a posição da chave
+    //busca na fila a posiï¿½ï¿½o da chave
     int pos = indexOf(&hashStruct->hashes[hashValue], key, equal); 
     
     return (pos!=-1)?true:false;
 }
-void* get(HashStruct *hashStruct, char *key, compare equal){
+void* get(HashStruct *hashStruct, char *key, compare equal) {
+    // descobre em qual fila/lista estÃ¡ o dado
+    int hashValue = hash(key);
+    //first Ã© nÃ³ sentinela, comeÃ§amos do segundo nÃ³
+    Node *aux = hashStruct->hashes[hashValue].first->next;
+    // procuramos o dado na lista
+    while(aux!=hashStruct->hashes[hashValue].first && !equal(aux->data, key))
+        aux=aux->next;
+
+    return aux->data;
 }
 void* removeKey(HashStruct *hashStruct, char *key, compare equal){
     int hashValue = hash(key);
@@ -53,9 +62,11 @@ void* removeKey(HashStruct *hashStruct, char *key, compare equal){
     return result;
 }
 
-void showHashStruct(HashStruct *hashStruct){
-<<<<<<< HEAD
+void showHashStruct(HashStruct *hashStruct, printNode print) {
+    printf("There are %d elements in the Hash\n\n",hashStruct->size);
+    for (int i=0; i < MAX; i++) {
+        printf("Hash %d has %d elements: ",i,hashStruct->hashes[i].size);
+        show(&hashStruct->hashes[i],print);
+        printf("\n");
+    }
 }
-=======
-}
->>>>>>> 40009f1973e6b36c0f32f3fa423eb3aeabc57056

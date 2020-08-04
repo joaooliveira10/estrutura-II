@@ -19,9 +19,9 @@ bool comparachave(void *data, void *key){
 
     return(strcmp(chave, c->email) == 0 )?true:false;
     /*strcmp(chave,email);
-    Onde chave e email são variáveis do tipo string que devem ser comparadas.
-    A função strcmp() pode retornar um valor nulo (zero), positivo ou negativo.
-    Quando as palavras comparadas são iguais, a função retorna 0. */
+    Onde chave e email sï¿½o variï¿½veis do tipo string que devem ser comparadas.
+    A funï¿½ï¿½o strcmp() pode retornar um valor nulo (zero), positivo ou negativo.
+    Quando as palavras comparadas sï¿½o iguais, a funï¿½ï¿½o retorna 0. */
 }
 void printcliente(void *data) {
     pessoa *a = (pessoa*)data;
