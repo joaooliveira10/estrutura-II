@@ -20,19 +20,15 @@ int hash(char *key){ //( Dupla 3- rubia e cristian)
     return sum%MAX; //retorna o resto da divisão
 }
 //Dupla 4 - Andre e Danubia
-int put(HashStruct *hashStruct, char *key, void *data, compare equal){
-
-    //teste sem a containsKey
-    int pos = hash(key);
-
-    int keyExist = indexOf(&hashStruct->hashes[pos],data,equal);
-
-    if(keyExist < 0 || isEmpty(&hashStruct->hashes[pos])){
-        enqueue(&hashStruct->hashes[pos],data);
-        hashStruct[pos].size++;
-        return 1;
+int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
+    if (!containsKey(hashStruct, key, equal) {
+        //adiciona na fila que está na posição devolvida pela função hash
+        int res = enqueue(&hashStruct->hashes[hash(key)],data);
+        //incrementa a qtde de elementos baseado na quantidade inserida por enqueue
+        hashStruct->size+=res;
+        return res;
     }
-    return -1;
+    return 0;
 }
 // Caroline e Gabriel
 bool containsKey(HashStruct *hashStruct, char *key, compare equal){
