@@ -5,7 +5,12 @@
 #include "DoublyLinkedList.c"
 
 
-void initHash(HashStruct *hashStruct){
+void initHash(HashStruct *hashStruct) {
+    for (int i=0;i<MAX;i++) {
+        //chamando init de DoublyLinkedList para inicializar cada lista do vetor
+        init(&(hashStruct->hashes[i]));
+    }
+    hashStruct->size = 0;
 }
 bool isHashEmpty(HashStruct *hashStruct){
     return hashStruct->size == 0;
@@ -36,8 +41,8 @@ bool containsKey(HashStruct *hashStruct, char *key, compare equal){
 	 //calcula a posi��o
     int hashValue = hash(key);
     //busca na fila a posi��o da chave
-    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal); 
-    
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
+
     return (pos!=-1)?true:false;
 }
 void* get(HashStruct *hashStruct, char *key, compare equal) {
@@ -51,7 +56,11 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
 
     return aux->data;
 }
+
+//Grupo 02 -Bruno e Henrique
 void* removeKey(HashStruct *hashStruct, char *key, compare equal){
+    //essa função encontra um dado utilizando uma lista, uma chave e
+    //uma função de comparação, depois remove o dado.
     int hashValue = hash(key);
     int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
     void* result = removePos(&hashStruct->hashes[hashValue], pos);
