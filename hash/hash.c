@@ -68,12 +68,14 @@ void* removeKey(HashStruct *hashStruct, char *key, compare equal){
     if (result!=NULL) hashStruct->size--;
     return result;
 }
-
+//Grupo 6 - Joao Angello
 void showHashStruct(HashStruct *hashStruct, printNode print) {
-    printf("There are %d elements in the Hash\n\n",hashStruct->size);
+    printf("There are %d elements in the Hash\n\n",hashStruct->size); //mostra a quantidade de pares armazenados no hash
     for (int i=0; i < MAX; i++) {
         printf("Hash %d has %d elements: ",i,hashStruct->hashes[i].size);
+        // mostra o valor do hash e a o seu tamanho
         show(&hashStruct->hashes[i],print);
         printf("\n");
+        //mostra na estrutura do hash um hash especifico
     }
 }
