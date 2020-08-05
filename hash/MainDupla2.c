@@ -3,6 +3,7 @@
 #include <string.h>
 #include "hash.c"
 
+//Main Bruno e Henrique
 typedef struct pessoa{
     char nome[50];
     char email[50];
