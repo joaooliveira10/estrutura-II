@@ -61,6 +61,7 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
 void* removeKey(HashStruct *hashStruct, char *key, compare equal){
     //essa função encontra um dado utilizando uma lista, uma chave e
     //uma função de comparação, depois remove o dado.
+    //Função remove um par(chave,valo)	
     int hashValue = hash(key);
     int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
     void* result = removePos(&hashStruct->hashes[hashValue], pos);
