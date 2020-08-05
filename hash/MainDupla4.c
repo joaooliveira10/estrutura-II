@@ -29,6 +29,15 @@ int main() {
     strcpy(andre->email,"andre@gmail.com");
     int x = put(&hashes,andre->email,andre,comparaChaves);
     printf("x:%d",x);
+    Cliente *danubia = (Cliente*)malloc(sizeof(Cliente));
+    strcpy(danubia->nome,"Danubia");
+    strcpy(danubia->email,"macedo@gmail.com");
+    put(&hashes, danubia->email, danubia, comparaChaves);
+    showHashStruct(&hashes, printCliente);
+    containsKey(&hashes, danubia->email, comparaChaves);
+    printf("%s",get(&hashes, andre->email,comparaChaves));
+
+
 
 
 return 0;
