@@ -36,7 +36,7 @@ int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
     }
     return 0;
 }
-// Caroline e Gabriel
+// Dupla 05 Caroline e Gabriel
 bool containsKey(HashStruct *hashStruct, char *key, compare equal){
 	 //calcula a posi��o
     int hashValue = hash(key);
