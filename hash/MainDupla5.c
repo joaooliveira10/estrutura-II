@@ -21,20 +21,20 @@ void printCliente(void *data) {
 }
 
 int main() {
-    HashStruct hash;
+    HashStruct hashe;
     initHash(&hashe);
 
     Cliente caroline = (Cliente) malloc(sizeof(Cliente));
     strcpy(caroline->nome,"caroline");
     strcpy(caroline->email,"loracliny50@gmail.com");
-    put(&hash,caroline->email,caroline,comparaChaves);
+    put(&hashe,caroline->email,caroline,comparaChaves);
 
 
     Cliente maria = (Cliente) malloc(sizeof(Cliente));
     strcpy(maria->nome,"maria");
     strcpy(maria->email,"maria@gmail.com");
-    put(&hash,maria->email,maria,comparaChaves);
+    put(&hashe,maria->email,maria,comparaChaves);
 
-    showHashStruct(&hash, printCliente);
+    showHashStruct(&hashe, printCliente);
 return 0;
 }
