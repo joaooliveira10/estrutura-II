@@ -4,12 +4,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef unsigned char uint8_t;
+
 enum boolean {
     true = 1, false = 0
 };
 
 typedef enum boolean bool;
-
 typedef struct Block {
     unsigned int index;
     char* previousHash;
