@@ -43,6 +43,7 @@ char* calculateBlockHash(Block *block) {
     return calculateHash(block->index, block->previousHash, block->timestamp, block->data);
 }
 
+// Dupla 02 - André e Danubia
 Block* generateNextBlock(Blockchain *blockchain, float data) {
     Block *previousBlock = getLatestBlock(blockchain);
     Block *newBlock = (Block*)malloc(sizeof(Block));
