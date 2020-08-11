@@ -1,4 +1,6 @@
 /*Dupla 2: Bruno ferreira e Herique sena*/
+#include "Blockchain.h"
+ 
 int main() {
 
     setlocale(LC_ALL,"portuguese");
@@ -23,18 +25,18 @@ int main() {
     } while(valor != 0);
 
     Block *aux = blockchain.latestBlock;
-    printf("\n\n O valor do ultimo nó (%d) é: %2.f",i-1,aux->data);
-    printf("\n\n O valor do primeiro nó (%d) é: %2.f",i-i,blockchain.genesisBlock->data);
+    printf("\n\n O valor do ultimo nï¿½ (%d) ï¿½: %2.f",i-1,aux->data);
+    printf("\n\n O valor do primeiro nï¿½ (%d) ï¿½: %2.f",i-i,blockchain.genesisBlock->data);
 
     printf("\n");
 
     while(aux != blockchain.genesisBlock){
-        printf("\n- Block %d com valor %2.f é valido?\n  resposta: %i\n",i-1,aux->data,isValidNewBlock(aux, aux->previousBlock));
+        printf("\n- Block %d com valor %2.f ï¿½ valido?\n  resposta: %i\n",i-1,aux->data,isValidNewBlock(aux, aux->previousBlock));
         aux = aux->previousBlock;
         i--;
     }
 
-    printf( "\n- Blockchain é valida?\n  resposta: %i\n",isBlockchainValid(&blockchain));
+    printf( "\n- Blockchain ï¿½ valida?\n  resposta: %i\n",isBlockchainValid(&blockchain));
 
     printf("\nsize: %u\n",blockchain.latestBlock->index);
     return EXIT_SUCCESS;
