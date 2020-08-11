@@ -1,7 +1,7 @@
 #include "Blockchain.c"
 #include "locale.h"
 
-//Dupla 2: Bruno ferreira e Herique sena
+/*Dupla 2: Bruno ferreira e Herique sena*/
 int main() {
 
     setlocale(LC_ALL,"portuguese");

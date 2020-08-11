@@ -1,4 +1,4 @@
-#include "sha-256.h"
+#include "sha-256.c"
 #include "Blockchain.h"
 #include <string.h>
 #include <time.h>
@@ -10,7 +10,7 @@ void initBlockchain(Blockchain *blockchain) {
     genesisBlock->previousBlock = NULL;
     genesisBlock->timestamp = time(NULL);
     genesisBlock->data = 1000000;
-    
+
     genesisBlock->hash = calculateHash(genesisBlock->index, genesisBlock->previousHash, genesisBlock->timestamp, genesisBlock->data);
 
     blockchain->genesisBlock = genesisBlock;
@@ -46,13 +46,13 @@ char* calculateBlockHash(Block *block) {
 Block* generateNextBlock(Blockchain *blockchain, float data) {
     Block *previousBlock = getLatestBlock(blockchain);
     Block *newBlock = (Block*)malloc(sizeof(Block));
-    
+
     newBlock->data = data;
     newBlock->previousHash = previousBlock->hash;
     newBlock->index = previousBlock->index+1;
     newBlock->timestamp = time(NULL);
     newBlock->hash = calculateBlockHash(newBlock);
-    
+
     return newBlock;
 }
 
