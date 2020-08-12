@@ -1,6 +1,6 @@
-#include "sha-256.c"
 #include "Blockchain.h"
 #include <string.h>
+#include "sha-256.h"
 #include <time.h>
 
 void initBlockchain(Blockchain *blockchain) {
@@ -10,7 +10,7 @@ void initBlockchain(Blockchain *blockchain) {
     genesisBlock->previousBlock = NULL;
     genesisBlock->timestamp = time(NULL);
     genesisBlock->data = 1000000;
-
+    
     genesisBlock->hash = calculateHash(genesisBlock->index, genesisBlock->previousHash, genesisBlock->timestamp, genesisBlock->data);
 
     blockchain->genesisBlock = genesisBlock;
@@ -43,17 +43,16 @@ char* calculateBlockHash(Block *block) {
     return calculateHash(block->index, block->previousHash, block->timestamp, block->data);
 }
 
-// Dupla 02 - André e Danubia
 Block* generateNextBlock(Blockchain *blockchain, float data) {
     Block *previousBlock = getLatestBlock(blockchain);
     Block *newBlock = (Block*)malloc(sizeof(Block));
-
+    
     newBlock->data = data;
     newBlock->previousHash = previousBlock->hash;
     newBlock->index = previousBlock->index+1;
     newBlock->timestamp = time(NULL);
     newBlock->hash = calculateBlockHash(newBlock);
-
+    
     return newBlock;
 }
 
@@ -71,7 +70,7 @@ bool isValidNewBlock(Block* newBlock, Block* previousBlock) {
     }
     return true;
 }
-// Dupla 5 Victor e Thays 
+
 bool isBlockchainValid(Blockchain *blockchain) {
     Block *aux = getLatestBlock(blockchain);
     while (aux!=blockchain->genesisBlock) {
