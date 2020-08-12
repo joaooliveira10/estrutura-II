@@ -37,6 +37,6 @@ int main() {
         ExibirInfo(block);
         block = block->previousBlock;
         
-    
+    }
     return 0;
 }
