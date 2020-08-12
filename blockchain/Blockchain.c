@@ -71,7 +71,7 @@ bool isValidNewBlock(Block* newBlock, Block* previousBlock) {
     }
     return true;
 }
-
+// Dupla 5 Victor e Thays 
 bool isBlockchainValid(Blockchain *blockchain) {
     Block *aux = getLatestBlock(blockchain);
     while (aux!=blockchain->genesisBlock) {
