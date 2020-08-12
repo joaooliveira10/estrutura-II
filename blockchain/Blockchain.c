@@ -80,7 +80,7 @@ bool isBlockchainValid(Blockchain *blockchain) {
     }
     return true;
 }
-
+// grupo 06 Caroline
 int addBlock(Blockchain *blockchain, Block *newBlock) {
     if (isValidNewBlock(newBlock, getLatestBlock(blockchain))) {
         newBlock->previousBlock = getLatestBlock(blockchain);
