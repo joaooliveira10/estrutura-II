@@ -33,4 +33,26 @@ int main(){
 
    printf("Blockchain valida? %d \n",isBlockchainValid(&blockchain));
 
+   printf("\n-----------Testes Adicionais---------\n");
+   printf(" ");
+   Blockchain blockchain2;
+   initBlockchain(&blockchain2);
+
+   printf("GenesisBlock Hash:%s\n",blockchain2.genesisBlock->hash);
+   printf("GenesisBlock timestamp:%lu\n",blockchain2.genesisBlock->timestamp);
+
+
+   Block *newBlockAndre = generateNextBlock(&blockchain2,55.0);
+   addBlock(&blockchain2,newBlockAndre);
+
+   Block * newBlockDanubia = generateNextBlock(&blockchain2,399.99);
+   addBlock(&blockchain2,newBlockDanubia);
+
+   printf("Bloco do andré válido ? %i\n", isValidNewBlock(newBlockAndre,blockchain2.genesisBlock));
+   printf("\nAntes da alteração - Cadeia de blocos é válida ?%i\n" ,isBlockchainValid(&blockchain2));
+   newBlockAndre->data = 444.6;
+   printf("\nDepois da alteração - Cadeia de blocos é válida ?%i\n" ,isBlockchainValid(&blockchain2));
+   printf("Size da lista: %u\n", blockchain2.latestBlock->index);
+
+   return 0;
 }
