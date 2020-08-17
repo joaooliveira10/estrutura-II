@@ -4,6 +4,8 @@
 #include <string.h>
 #include "BinarySearchTree.c"
 
+// Bruno e Henrique
+
 typedef struct objeto_conteudo{
     int key;
     char value[10];
@@ -50,6 +52,7 @@ void aux_add(objeto_conteudo *el, TreeNode **raiz){
         aux_add(el, raiz);
 }
 
+// Bruno e Henrique
 
 int main(){
     setlocale(LC_ALL,"portuguese");
