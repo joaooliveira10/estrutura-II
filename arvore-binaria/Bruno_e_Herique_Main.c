@@ -22,9 +22,9 @@ void print_node(void *element){
     objeto_conteudo *dado = (objeto_conteudo*) element;
 
     printf("\n");
-    printf("%d ", dado->key);
+    printf(" chave %d ", dado->key);
     printf("\n\n");
-    printf("%s ", dado->value);
+    printf(" %s ", dado->value);
     printf("\n\n");
 
 }
@@ -77,6 +77,7 @@ int main(){
     printf("\n");
     scanf("%d",&op);
 
+    system("cls");
     switch(op){
     case 1:
         printf("\n\n");
