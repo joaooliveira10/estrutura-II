@@ -35,7 +35,7 @@ int main() {
 
     TreeNode * tree = NULL;
 
-    BinarySearchTreeElement *el, findEl;
+    BinarySearchTreeElement *el;
 
     el = (BinarySearchTreeElement*) malloc(sizeof(BinarySearchTreeElement));
     assert(el != NULL);
@@ -58,14 +58,43 @@ int main() {
     snprintf(el->value,10,"Val 3");
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
     
+    el = (BinarySearchTreeElement*) malloc(sizeof(BinarySearchTreeElement));
+    assert(el != NULL);
+    el->key = 7;
+    snprintf(el->value,10,"Val 7");
+    assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
+
+    el = (BinarySearchTreeElement*) malloc(sizeof(BinarySearchTreeElement));
+    assert(el != NULL);
+    el->key = 13;
+    snprintf(el->value,10,"Val 13");
+    assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
+
+    el = (BinarySearchTreeElement*) malloc(sizeof(BinarySearchTreeElement));
+    assert(el != NULL);
+    el->key = 1;
+    snprintf(el->value,10,"Val 1");
+    assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
+    
 
     printf("\nheight:%d\n",height(tree));
-    printf("Antes da Remoção:\n");
+    printf("-=-=-=-=-=-=-Antes da Remoção:-=-=-=-=-=-=-=-\n");
     in_order(tree,printInteger);
+    printf("\nPost_order:\n");
+    post_order(tree, printInteger);
+    printf("\nPre_order\n");
+    pre_order(tree, printInteger);
+    printf("\n");
 
     printf("\nremovedNode?%d\n",removeTreeNode(&tree,el,&BinarySearchTreeElementComparator));
-    printf("\nPós-remoção\n");
+    printf("\n-=-=-=-=-=-=Pós-remoção-=-=-=-=-=-=-\n");
     in_order(tree,printInteger);
+    
+    printf("\n-=-=-=-=-=-=Procurando Valor Invalido -=-=-=-=-=-=-\n");
+    BinarySearchTreeElement invalid;
+    invalid.key = 0;
+    assert(find(tree, (void *) &invalid, &BinarySearchTreeElementComparator,(void **) &el) == 1);
+
 
 
     return 0;

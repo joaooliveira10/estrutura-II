@@ -94,6 +94,7 @@ TreeNode *smallerLeft(TreeNode **no){
     }
 }
 
+// Dupla 02- André Geraldo e Danubia Macedo
 int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
     if(*root == NULL){   // caso a chave nao exista na arvore
         return 0;
