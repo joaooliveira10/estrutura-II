@@ -1,5 +1,6 @@
 #include "BinarySearchTree.h"
 
+// Grupo 0 - Rubia e Cristian
 int add(TreeNode **root, void *element, TreeComparator f) {
     if ((*root) == NULL) {
         // alcançou o local da folha, atualiza o pai
@@ -23,6 +24,7 @@ int add(TreeNode **root, void *element, TreeComparator f) {
     
 }
 
+//Grupo 1 - João Angello
 int find(TreeNode *root, void *key, TreeComparator f, void **element) {
     int compvalue;
     
@@ -44,6 +46,7 @@ int find(TreeNode *root, void *key, TreeComparator f, void **element) {
     return find(root->left, key, f, element);
 }
 
+//Grupo 2 - Wigor
 void in_order(TreeNode *root, printNode print) {
     if (root!=NULL) {
         in_order(root->left, print);
@@ -52,6 +55,7 @@ void in_order(TreeNode *root, printNode print) {
     }
 }
 
+//Grupo 3 - Bruno e Henrique 
 void pre_order(TreeNode *root, printNode print) {
     if (root!=NULL) {
         print(root->element);
@@ -60,6 +64,7 @@ void pre_order(TreeNode *root, printNode print) {
     }
 }
 
+//Grupo 4 - ...
 void post_order(TreeNode *root, printNode print) {
     if (root!=NULL) {
         post_order(root->left, print);
@@ -94,7 +99,7 @@ TreeNode *smallerLeft(TreeNode **no){
     }
 }
 
-// Dupla 02- André Geraldo e Danubia Macedo
+//Grupo 5 - André Geraldo e Danubia Macedo
 int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
     if(*root == NULL){   // caso a chave nao exista na arvore
         return 0;
@@ -137,6 +142,7 @@ int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
     return 1;
 }
 
+//Grupo 6 - Caroline
 int height (TreeNode *root) {
     if (root == NULL)
         return -1; // altura da árvore vazia
@@ -149,6 +155,7 @@ int height (TreeNode *root) {
 }
 
 //navegar em pos-ordem
+//Grupo 7 - Victor e Thays 
 void destroy (TreeNode **root) {
     if (*root==NULL) return;
     destroy(&(*root)->left);
