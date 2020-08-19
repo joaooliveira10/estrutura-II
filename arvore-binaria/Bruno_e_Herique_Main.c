@@ -53,8 +53,6 @@ void aux_add(objeto_conteudo *el, TreeNode **raiz){
         aux_add(el, raiz);
 }
 
-// Bruno e Henrique
-
 int main(){
     setlocale(LC_ALL,"portuguese");
     TreeNode *tree = NULL;
@@ -82,7 +80,7 @@ int main(){
 
     system("cls");
     switch(op){
-    //Imprime os elementos raiz esquerda direita   
+     //Imprime os elementos raiz esquerda direita   
     case 1:
         printf("\n\n");
         in_order(tree, print_node);
@@ -92,7 +90,7 @@ int main(){
         printf("\n\n");
         pre_order(tree, print_node);
     break;
-    //Remove algum elemento
+    //Remove algum elemento    
     case 3:
         printf("\n\n");
         post_order(tree, print_node);
@@ -100,10 +98,11 @@ int main(){
     }
 
     printf("\n\n altura da arvore %d", height(tree));
-    //Destrói a arvore
+   //Destrói a arvore
     destroy(&tree);
     if(tree==NULL){
         printf("\n\n arvore destruida");
+
     }
 }
 
