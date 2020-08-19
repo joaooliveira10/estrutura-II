@@ -2,6 +2,7 @@
 #include <string.h>
 #include "BinarySearchTree.h"
 
+// MAIN_0  RUBIA E CRISTIAN 
 //Elemento que será guardado na árvore
 typedef struct buscabinaria {
     int key;
