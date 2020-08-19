@@ -41,45 +41,75 @@ TreeNode *tree = NULL;
   //pedimos espaço na memória para alocar um ponteiro do tipo busca binária
   elemento = (buscabinaria *) malloc(sizeof(buscabinaria));
     if(elemento != NULL)
+      return printf("erro na memória");
+    
     elemento->key = 50;
 
-    add(&tree, elemento, &comparadorInt);
-    add(&tree, elemento, &comparadorInt);
+    if(add(&tree, elemento, &comparadorInt))
+      return 1;
+
+    if(add(&tree, elemento, &comparadorInt))
+      return -1;
      
   elemento = (buscabinaria *) malloc(sizeof(buscabinaria));
     if(elemento != NULL)
+      return printf("erro na memória");
+
     elemento->key = 51;
 
-    add(&tree, elemento, &comparadorInt);
-    add(&tree, elemento, &comparadorInt);
+    if(add(&tree, elemento, &comparadorInt))
+      return 1;
+
+    if(add(&tree, elemento, &comparadorInt))
+      return -1;
 
   elemento = (buscabinaria *) malloc(sizeof(buscabinaria));
     if(elemento != NULL)
+      return printf("erro na memória");
+
     elemento->key = 52;
 
-    add(&tree, elemento, &comparadorInt);
-    add(&tree, elemento, &comparadorInt);
+    if(add(&tree, elemento, &comparadorInt))
+      return 1;
+
+    if(add(&tree, elemento, &comparadorInt))
+      return -1;
 
   elemento = (buscabinaria *) malloc(sizeof(buscabinaria));
     if(elemento != NULL)
+      return printf("erro na memória");
+
     elemento->key = 53;
 
-    add(&tree, elemento, &comparadorInt);
-    add(&tree, elemento, &comparadorInt);
+    if(add(&tree, elemento, &comparadorInt))
+      return 1;
+
+    if(add(&tree, elemento, &comparadorInt))
+      return -1;
 
   elemento = (buscabinaria *) malloc(sizeof(buscabinaria));
     if(elemento != NULL)
+      return printf("erro na memória");
+
     elemento->key = 54;
 
-    add(&tree, elemento, &comparadorInt);
-    add(&tree, elemento, &comparadorInt);
+    if(add(&tree, elemento, &comparadorInt))
+      return 1;
+
+    if(add(&tree, elemento, &comparadorInt))
+      return -1;
 
   elemento = (buscabinaria *) malloc(sizeof(buscabinaria));
     if(elemento != NULL)
+      return printf("erro na memória");
+
     elemento->key = 55;
 
-    add(&tree, elemento, &comparadorInt);
-    add(&tree, elemento, &comparadorInt);
+    if(add(&tree, elemento, &comparadorInt))
+      return 1;
+
+    if(add(&tree, elemento, &comparadorInt))
+      return -1;
 
 //sistema que printa os valores como se fossem calculadora polonesa
 //printando a raiz em prmeiro, no meio e no final das árvores.
