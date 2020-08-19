@@ -20,7 +20,7 @@ static int binarysearch_treecomparator(void *element_1, void *element_2){
 
         return(e1->key < e2->key)? -1: 0;
 }
-/
+
 void print_node(void *element){
     objeto_conteudo *dado = (objeto_conteudo*) element;
 
@@ -37,7 +37,7 @@ void aux_add(objeto_conteudo *el, TreeNode **raiz){
     printf("\n digite valor: ");
     int valor;
     scanf("%d", &valor);
-     el->key = valor;
+    el->key = valor;
 
     snprintf(el->value, 10, "val %d",valor);
 
@@ -96,13 +96,11 @@ int main(){
         post_order(tree, print_node);
     break;
     }
-
+    //Mostra a altura da arvore
     printf("\n\n altura da arvore %d", height(tree));
    //Destrói a arvore
     destroy(&tree);
     if(tree==NULL){
         printf("\n\n arvore destruida");
-
     }
 }
-
