@@ -5,12 +5,13 @@
 #include "BinarySearchTree.c"
 
 // Bruno e Henrique
-
+/*Elemento que será guardado*/
 typedef struct objeto_conteudo{
     int key;
     char value[10];
 }objeto_conteudo;
 
+/*Função para comparação*/
 static int binarysearch_treecomparator(void *element_1, void *element_2){
     objeto_conteudo *e1 = (objeto_conteudo*) element_1;
     objeto_conteudo *e2 = (objeto_conteudo*) element_2;
@@ -19,7 +20,7 @@ static int binarysearch_treecomparator(void *element_1, void *element_2){
 
         return(e1->key < e2->key)? -1: 0;
 }
-
+/
 void print_node(void *element){
     objeto_conteudo *dado = (objeto_conteudo*) element;
 
@@ -43,10 +44,10 @@ void aux_add(objeto_conteudo *el, TreeNode **raiz){
     int resultado;
     resultado = add(raiz, el, &binarysearch_treecomparator);
     if(resultado == -1)
-        printf("valor j� existe");
+        printf("valor j� existe");
 
     int resp;
-    printf("\n quer inserir outro elemento: 1-sim ou 2-n�o;");
+    printf("\n quer inserir outro elemento: 1-sim ou 2-n�o;");
     scanf("%d",&resp);
     if(resp == 1)
         aux_add(el, raiz);
@@ -69,7 +70,7 @@ int main(){
     if(resultado == 1){
         printf("\n A chave corresponde ao: %s", el->value);
     }else{
-        printf("\n valor n�o encontrado");
+        printf("\n valor n�o encontrado");
     }
 
     int op;
@@ -77,19 +78,21 @@ int main(){
     printf("\n 1 - in_order");
     printf("\n 2 - pre_order");
     printf("\n 3 - post_order");
-    printf("\n");
     scanf("%d",&op);
 
     system("cls");
     switch(op){
+    //Imprime os elementos raiz esquerda direita   
     case 1:
         printf("\n\n");
         in_order(tree, print_node);
     break;
+    //Imprime os elementos esquerda direita raiz
     case 2:
         printf("\n\n");
         pre_order(tree, print_node);
     break;
+    //Remove algum elemento
     case 3:
         printf("\n\n");
         post_order(tree, print_node);
@@ -97,12 +100,10 @@ int main(){
     }
 
     printf("\n\n altura da arvore %d", height(tree));
-
+    //Destrói a arvore
     destroy(&tree);
     if(tree==NULL){
         printf("\n\n arvore destruida");
-
-
     }
 }
 
